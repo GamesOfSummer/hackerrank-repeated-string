@@ -1,3 +1,5 @@
 node_modules
 build
 out
+/out/index.js
+/out/index.js.map
