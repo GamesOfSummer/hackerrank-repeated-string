@@ -57,12 +57,50 @@ function repeatedString(input: string, stringLength: number) {
     return aCounter;
 }
 
+function repeatedStringRedo(input: string, stringLength: number) {
+    // problem - a * 1000000 breaks
+
+    let i = 0;
+    let stringIndex = 0;
+    let originalInput = input;
+
+    // orginal count
+    let aCounter = 0;
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] === 'a') {
+            aCounter++;
+        }
+    }
+
+    const aInStringTotal = Math.floor(stringLength / input.length);
+    aCounter = aCounter * aInStringTotal;
+
+    // while (i < stringLength) {
+    //     stringIndex++;
+    //     if (stringIndex > originalInput.length) {
+    //         stringIndex = 0;
+    //     }
+
+    //     input = input.concat(input[stringIndex]);
+    //     i++;
+    // }
+
+    // let aCounter = 0;
+    // for (let i = 0; i < input.length; i++) {
+    //     if (input[i] === 'a') {
+    //         aCounter++;
+    //     }
+    // }
+
+    return aCounter;
+}
+
 consoleStart();
 
 validateTestCase(repeatedString('aba', 10), 7);
+validateTestCase(repeatedStringRedo('aba', 10), 7);
 
 consoleEnd();
-
 consoleBuffer();
 
 export {};

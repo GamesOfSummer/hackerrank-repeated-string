@@ -34,12 +34,50 @@ function repeatedString(input, stringLength) {
         if (stringIndex > originalInput.length) {
             stringIndex = 0;
         }
-        input.concat(input[stringIndex]);
+        input = input.concat(input[stringIndex]);
         i++;
     }
+    var aCounter = 0;
+    for (var i_1 = 0; i_1 < input.length; i_1++) {
+        if (input[i_1] === 'a') {
+            aCounter++;
+        }
+    }
+    return aCounter;
+}
+function repeatedStringRedo(input, stringLength) {
+    // problem - a * 1000000 breaks
+    var i = 0;
+    var stringIndex = 0;
+    var originalInput = input;
+    // orginal count
+    var aCounter = 0;
+    for (var i_2 = 0; i_2 < input.length; i_2++) {
+        if (input[i_2] === 'a') {
+            aCounter++;
+        }
+    }
+    var aInStringTotal = Math.floor(stringLength / input.length);
+    aCounter = aCounter * aInStringTotal;
+    // while (i < stringLength) {
+    //     stringIndex++;
+    //     if (stringIndex > originalInput.length) {
+    //         stringIndex = 0;
+    //     }
+    //     input = input.concat(input[stringIndex]);
+    //     i++;
+    // }
+    // let aCounter = 0;
+    // for (let i = 0; i < input.length; i++) {
+    //     if (input[i] === 'a') {
+    //         aCounter++;
+    //     }
+    // }
+    return aCounter;
 }
 consoleStart();
 validateTestCase(repeatedString('aba', 10), 7);
+validateTestCase(repeatedStringRedo('aba', 10), 7);
 consoleEnd();
 consoleBuffer();
 //# sourceMappingURL=index.js.map
