@@ -58,13 +58,11 @@ function repeatedString(input: string, stringLength: number) {
 }
 
 function repeatedStringRedo(input: string, stringLength: number) {
-    // problem - a * 1000000 breaks
-
     let i = 0;
     let stringIndex = 0;
     let originalInput = input;
 
-    // orginal count
+    // original count
     let aCounter = 0;
     for (let i = 0; i < input.length; i++) {
         if (input[i] === 'a') {
@@ -75,24 +73,17 @@ function repeatedStringRedo(input: string, stringLength: number) {
     const aInStringTotal = Math.floor(stringLength / input.length);
     aCounter = aCounter * aInStringTotal;
 
-    // while (i < stringLength) {
-    //     stringIndex++;
-    //     if (stringIndex > originalInput.length) {
-    //         stringIndex = 0;
-    //     }
+    const aInStringTotalRemainder = stringLength % input.length;
+    let aCounterRemainder = 0;
+    if (aInStringTotalRemainder > 0) {
+        for (let i = 0; i < aInStringTotalRemainder; i++) {
+            if (input[i] === 'a') {
+                aCounterRemainder++;
+            }
+        }
+    }
 
-    //     input = input.concat(input[stringIndex]);
-    //     i++;
-    // }
-
-    // let aCounter = 0;
-    // for (let i = 0; i < input.length; i++) {
-    //     if (input[i] === 'a') {
-    //         aCounter++;
-    //     }
-    // }
-
-    return aCounter;
+    return aCounter + aCounterRemainder;
 }
 
 consoleStart();

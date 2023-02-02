@@ -50,7 +50,7 @@ function repeatedStringRedo(input, stringLength) {
     var i = 0;
     var stringIndex = 0;
     var originalInput = input;
-    // orginal count
+    // original count
     var aCounter = 0;
     for (var i_2 = 0; i_2 < input.length; i_2++) {
         if (input[i_2] === 'a') {
@@ -59,6 +59,16 @@ function repeatedStringRedo(input, stringLength) {
     }
     var aInStringTotal = Math.floor(stringLength / input.length);
     aCounter = aCounter * aInStringTotal;
+    var aInStringTotalRemainder = stringLength % input.length;
+    var aCounterRemainder = 0;
+    if (aInStringTotalRemainder > 0) {
+        for (var i_3 = 0; i_3 < aInStringTotalRemainder; i_3++) {
+            if (input[i_3] === 'a') {
+                aCounterRemainder++;
+            }
+        }
+    }
+    return aCounter + aCounterRemainder;
     // while (i < stringLength) {
     //     stringIndex++;
     //     if (stringIndex > originalInput.length) {
@@ -73,7 +83,6 @@ function repeatedStringRedo(input, stringLength) {
     //         aCounter++;
     //     }
     // }
-    return aCounter;
 }
 consoleStart();
 validateTestCase(repeatedString('aba', 10), 7);
